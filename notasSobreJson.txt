@@ -1,0 +1,13 @@
+Json não aceita cometários, portanto, esse arquivo foi criado para explicar alguns pontos adicionados nele durante a aula
+
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -e js,html,css --ignore node_modules --ignore public/libs"   
+  },
+  
+    Na estrutura acima foi adicinada o item dev no pacote json. Abaixo segue uma anotação importante:
+    Antes dos dois pontos é o nome q quiser para rodar esse script. Esse comando é para determinar que tipo de 
+ arquivo o nodemon tem q ouvir e excluiu a escuta node_modules, por exemplo. Para chamar esse script no 
+ terminal usa o comando "npm run dev", neste caso
+

@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+
+{% block main %}
+
+    <section class="card m-5">    
+        <header class="card-header">
+            <h3>Clientes</h3>            
+        </header>
+        <div class="card-body">
+            <a href="/cliente/adicionar" class="btn btn-primary">Adicionar</a>
+            <table class="table">
+                <thead>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Ações</th>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente.id }}</td>
+                            <td>{{ cliente.nome }}</td>
+                            <td>{{ cliente.cpf }}</td>
+                            <td>
+                                <a href="#">Editar</a>
+                                <a href="#">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section> 
+
+{% endblock %}

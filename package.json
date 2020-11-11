@@ -1,0 +1,23 @@
+{
+  "name": "tads-template-projeto-node",
+  "version": "1.0.0",
+  "description": "Template de projeto para a Disciplina de Desenvolvimento Web 2 do TADS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -e js,html,css --ignore node_modules --ignore public/libs"   
+  },
+  "keywords": [],
+  "author": "Eduardo Tanabe",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.2",
+    "pg": "^8.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.5"
+  }
+}
+
+
