@@ -22,8 +22,8 @@
                             <td>{{ cliente.nome }}</td>
                             <td>{{ cliente.cpf }}</td>
                             <td>
-                                <a href="#">Editar</a>
-                                <a href="#">Excluir</a>
+                                <a href="/cliente/editar/{{cliente.id}}">Editar</a>
+                                <a href="/cliente/excluir/{{cliente.id}}">Excluir</a>
                             </td>
                         </tr>
                     {% endfor %}

@@ -1,15 +1,6 @@
-const {response} = require('express')
 const express = require('express')
 const nunjucks = require('nunjucks')
-const {db} = require('./src/db/connection')
-
-/*db.query('SELECT * FROM cliente',(err,result)=>{
-  if(err) {
-    console.log(`Houve um erro ao conectar: ${err}`)
-  }
-  console.table(result.rows)
-})*/
-
+const clienteController = require('./src/controllers/ClienteController')
 
 const app = express()
 const port = 3000
@@ -39,32 +30,17 @@ app.get('/categoria-produto/adicionar',(req,res)=>{
 })
 
 //ROTAS PARA CLIENTES
-app.get('/cliente/listar', (req,res)=>{
-  db.query('SELECT * FROM cliente', (err, result)=>{
-    if(err){
-      console.log(`Houve um erroao listar os clientes: ${err}`)
-    }
-    res.render('cliente/listar', {clientes:result.rows})
-  })  
-})
-app.get('/cliente/adicionar',(req,res)=>{
-  res.render('cliente/adicionar')
-})
+app.get('/cliente/listar', clienteController.index) // como não é este método q irá invocar o método clienteController.index, não vai precisar colocar parênteses no último método
 
-app.post('/cliente/salvar', (req,res)=>{
-  const query = {
-  text:'INSERT INTO cliente(nome,cpf) VALUES ($1,$2)',
-  values:[req.body.nome,req.body.cpf]
-  }
-  db.query(query,(err,result)=>{
-    if(err){
-      console.log(`Houve um erro: ${err}`)
-    }
-    console.log(result)
-  }) 
+app.get('/cliente/adicionar', clienteController.create)
 
-  res.redirect('/cliente/listar')
-})
+app.post('/cliente/salvar', clienteController.store)
+
+app.get('/cliente/editar/:id', clienteController.edit) // Como na URL está enviando uma informação (no caso o id) pelo href do html, é preciso indicar para o express que depois do editar/ não é uma rota, para isso usa-se o ":" e dps um nome para esse parâmetro
+
+app.post('/cliente/atualizar', clienteController.update)
+
+app.get('/cliente/excluir/:id', clienteController.delete)
 
 
 app.listen(port, () => {
