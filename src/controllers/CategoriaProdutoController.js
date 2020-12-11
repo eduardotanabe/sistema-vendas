@@ -32,6 +32,8 @@ class CategoriaProdutoController {
         })
     }
 
+    // EDIÇÃO DE CATEGORIA
+    // Apresenta tela de edição com campos preenchidos
     edit(req, res) {
         console.log(req.params.id)
         const query = {
@@ -46,6 +48,7 @@ class CategoriaProdutoController {
         })
     }
 
+    // Grava edição
     update(req, res) {
         const query = {
             text: 'UPDATE categoria_produto SET descricao=$1 WHERE id=$2',
@@ -60,6 +63,7 @@ class CategoriaProdutoController {
         })
     }
 
+    // EXCLUI CATEGORIAS
     delete(req, res) {
         console.log(req.params.id)
         const id = req.params.id
