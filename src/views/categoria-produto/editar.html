@@ -4,18 +4,18 @@
 
     <section class="card m-5">
         <header class="card-header">
-            <h3>Adicionar Categoria de Produto</h3>
+            <h3>Adicionar Cliente</h3>
         </header>
         <div class="card-body">
-            <form action="/categoria-produto/salvar" method="post"> 
+            <form action="/categoria-produto/atualizar" method="post"> 
+                <input type="hidden" name="id" value={{categoria.id}}>
                 <div class="form-group">
                     <label>Descrição</label>
-                    <input type="text" class="form-control" name="descricao" placeholder="Ex. Televisão">
-                </div>
+                    <input type="text" class="form-control" name="descricao" value="{{categoria.descricao}}">
+                </div>                
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
-        </div><!-- card-body -->
-    </section><!-- card-->
+        </div>
+    </section>
 
-   
 {% endblock %}

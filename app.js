@@ -1,6 +1,8 @@
 const express = require('express')
 const nunjucks = require('nunjucks')
 const clienteController = require('./src/controllers/ClienteController')
+const catergoriaProdutoController = require('./src/controllers/CategoriaProdutoController')
+const categoriaProdutoController = require('./src/controllers/CategoriaProdutoController')
 
 const app = express()
 const port = 3000
@@ -13,21 +15,23 @@ nunjucks.configure('./src/views', { // aqui tá indicando que o as views estão 
   express: app
 });
 
-
-
 // ROTAS
 app.get('/',(req,res)=>{ 
   res.render('index')
 })
 
-// ROTAS PARA PRODUTOS
-app.get('/categoria-produto/listar',(req,res)=>{
-  let {categoriasDeProduto} = require('./src/db/fakeData')
-  res.render('categoria-produto/listar',{categorias:categoriasDeProduto})
-})
-app.get('/categoria-produto/adicionar',(req,res)=>{
-  res.render('categoria-produto/adicionar')
-})
+// ROTAS PARA CATEGORIA DOS PRODUTOS
+app.get('/categoria-produto/listar', catergoriaProdutoController.index)
+
+app.get('/categoria-produto/adicionar', catergoriaProdutoController.create)
+
+app.post('/categoria-produto/salvar', categoriaProdutoController.store)
+
+app.get('/categoria-produto/editar/:id', catergoriaProdutoController.edit)
+
+app.post('/categoria-produto/atualizar', categoriaProdutoController.update)
+
+app.get('/categoria-produto/excluir/:id', catergoriaProdutoController.delete)
 
 //ROTAS PARA CLIENTES
 app.get('/cliente/listar', clienteController.index) // como não é este método q irá invocar o método clienteController.index, não vai precisar colocar parênteses no último método
