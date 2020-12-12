@@ -3,6 +3,7 @@ const nunjucks = require('nunjucks')
 const clienteController = require('./src/controllers/ClienteController')
 const catergoriaProdutoController = require('./src/controllers/CategoriaProdutoController')
 const categoriaProdutoController = require('./src/controllers/CategoriaProdutoController')
+const usuarioController = require('./src/controllers/UsuarioController')
 
 const app = express()
 const port = 3000
@@ -45,6 +46,20 @@ app.get('/cliente/editar/:id', clienteController.edit) // Como na URL está envi
 app.post('/cliente/atualizar', clienteController.update)
 
 app.get('/cliente/excluir/:id', clienteController.delete)
+
+// ROTAS PARA CATEGORIA DOS PRODUTOS
+app.get('/usuario/listar', usuarioController.index)
+
+app.get('/usuario/adicionar', usuarioController.create)
+
+app.post('/usuario/salvar', usuarioController.store)
+
+app.get('/usuario/editar/:id', usuarioController.edit)
+
+app.post('/usuario/atualizar', usuarioController.update)
+
+app.get('/usuario/excluir/:id', usuarioController.delete)
+
 
 
 app.listen(port, () => {
