@@ -4,6 +4,7 @@ const clienteController = require('./src/controllers/ClienteController')
 const catergoriaProdutoController = require('./src/controllers/CategoriaProdutoController')
 const categoriaProdutoController = require('./src/controllers/CategoriaProdutoController')
 const usuarioController = require('./src/controllers/UsuarioController')
+const formaPagamentoController = require('./src/controllers/FormaPagamentoController')
 
 const app = express()
 const port = 3000
@@ -47,7 +48,7 @@ app.post('/cliente/atualizar', clienteController.update)
 
 app.get('/cliente/excluir/:id', clienteController.delete)
 
-// ROTAS PARA CATEGORIA DOS PRODUTOS
+// ROTAS PARA USUÁRIO
 app.get('/usuario/listar', usuarioController.index)
 
 app.get('/usuario/adicionar', usuarioController.create)
@@ -60,6 +61,19 @@ app.post('/usuario/atualizar', usuarioController.update)
 
 app.get('/usuario/excluir/:id', usuarioController.delete)
 
+
+// ROTAS PARA FORMA DE PAGAMENTO
+app.get('/forma-pagamento/listar', formaPagamentoController.index)
+
+app.get('/forma-pagamento/adicionar', formaPagamentoController.create)
+
+app.post('/forma-pagamento/salvar', formaPagamentoController.store)
+
+app.get('/forma-pagamento/editar/:id', formaPagamentoController.edit)
+
+app.post('/forma-pagamento/atualizar', formaPagamentoController.update)
+
+app.get('/forma-pagamento/excluir/:id', formaPagamentoController.delete)
 
 
 app.listen(port, () => {
