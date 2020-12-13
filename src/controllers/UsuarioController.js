@@ -51,7 +51,7 @@ class UsuarioController {
     update(req, res) {
         const dados = req.body
         const query = {
-            text: 'UPDATE usuario SET nome=$1, email=$2, senha=$3 where id=$4',
+            text: 'UPDATE usuario SET nome=$1, email=$2, senha=$3 WHERE id=$4',
             values: [dados.nome, dados.email, dados.senha, dados.id]
         }
         db.query(query, (err, result) => {
